@@ -11,11 +11,17 @@ import UIKit
 class SecondViewController: UIViewController {
     var year:String! // = String()
     @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var secondWevView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         myLabel.text = year
+        let urlString = "january" + year + ".htm"
+
+        let url = URL(fileReferenceLiteralResourceName: urlString)
+
+        secondWevView.loadRequest(URLRequest(url: url))
     }
 
 
