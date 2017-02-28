@@ -13,27 +13,30 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var MonthView2017: UIWebView!
     @IBOutlet weak var butt: UIButton!
-//}// closed class
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        butt.isEnabled = true
     }
     @IBAction func buttAct(_ sender: UIButton) {
         print("Pressed")
-        butt.isEnabled = false
         let year = "20" + String(sender.tag)
-        print(year ?? "nil value")
+        print(year ?? "nil value") // this was for when year was an opional string.  it works both ways
+
         let urlString = "january" + year + ".htm"
 
         let url = URL(fileReferenceLiteralResourceName: urlString)
 
         MonthView2017.loadRequest(URLRequest(url: url))
         
-        let monthlyViewController = storyboard?.instantiateViewController(withIdentifier: "second") as! SecondViewController
-
-        monthlyViewController.year = "2017"
+        let monthlyViewController = self.storyboard?.instantiateViewController(withIdentifier: "second") as! SecondViewController
+        if monthlyViewController.year == nil {
+            monthlyViewController.year = "2017"
+        }else{
+            monthlyViewController.year = "2018"
+        }
+        print("From first VC :",monthlyViewController.year)
 
         // Take user to MonthlyViewController
         
@@ -42,6 +45,8 @@ class ViewController: UIViewController {
 
 
     }
+
+    // not used: worked prior to using above avtion
     @IBAction func january(_ sender: AnyObject) {
         let year = "2017"
 

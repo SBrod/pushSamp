@@ -9,13 +9,12 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-    var year = String()
+    var year:String! // = String()
     @IBOutlet weak var myLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         myLabel.text = year
     }
 
